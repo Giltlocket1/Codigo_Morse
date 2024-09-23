@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Texto y Código Morse</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .alert {
+            border-radius: 10px;
+        }
+        .alert i {
+            margin-right: 0.5rem;
+        }
+        .is-invalid {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h1 class="text-center mb-4">
+                        <i class="bi bi-code-slash"></i> Conversor de Código Morse
+                    </h1>
+                    <div class="mb-3">
+                        <label for="inputTexto" class="form-label">Texto o Código Morse</label>
+                        <input type="text" class="form-control" id="inputTexto" placeholder="Escribe un texto o código Morse...">
+                    </div>
+                    <div class="text-center mb-3">
+                        <button id="btnTextoAMorse" class="btn btn-custom mb-2 w-100">
+                            <i class="bi bi-arrow-right"></i> Convertir Texto a Morse
+                        </button>
+                        <button id="btnMorseATexto" class="btn btn-outline-primary w-100">
+                            <i class="bi bi-arrow-left"></i> Convertir Morse a Texto
+                        </button>
+                    </div>
+                    <div class="alert alert-warning d-none text-center" id="alertaError">
+                        <i class="bi bi-exclamation-circle"></i> Por favor, introduce un texto válido.
+                    </div>
+                    <div class="alert alert-success d-none text-center" id="resultado"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vinculamos el archivo JavaScript -->
+    <script src="./public/JS/app.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
