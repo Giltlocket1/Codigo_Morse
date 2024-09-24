@@ -36,6 +36,10 @@
         .is-invalid {
             border-color: #dc3545;
         }
+        /* Asegura que los espacios se muestren correctamente */
+        #resultado {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +65,8 @@
                     <div class="alert alert-warning d-none text-center" id="alertaError">
                         <i class="bi bi-exclamation-circle"></i> Por favor, introduce un texto válido.
                     </div>
-                    <div class="alert alert-success d-none text-center" id="resultado"></div>
+                    <div class="alert alert-success d-none text-center" id="resultado" style="white-space: pre-wrap;"></div>
+
                 </div>
             </div>
         </div>

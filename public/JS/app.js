@@ -7,7 +7,7 @@ $(document).ready(function() {
         'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
         'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
         '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-        '9': '----.', '0': '-----', ' ': '/', '.': '.-.-.-', ',': '--..--'
+        '9': '----.', '0': '-----', '.': '.-.-.-', ',': '--..--', ' ': ' ' // Espacio en blanco
     };
 
     const morseToText = Object.keys(morseCode).reduce((obj, key) => {
@@ -16,24 +16,21 @@ $(document).ready(function() {
     }, {});
 
     // Validación de texto vacío
-    function validarEntrada(texto) {
-        return texto.trim().length > 0;
-    }
+    const validarEntrada = texto => texto.trim().length > 0;
+
+    // Validación de caracteres alfanuméricos
+    const validarCaracteres = texto => /^[A-Za-z0-9.,\s]+$/.test(texto);
 
     // Función para convertir texto a morse
-    function textoAMorse(texto) {
-        return texto.toUpperCase().split('').map(char => morseCode[char] || '').join(' ');
-    }
+    const textoAMorse = texto => texto.toUpperCase().split('').map(char => morseCode[char] || '').join(' ');
 
     // Función para convertir morse a texto
-    function morseATexto(morse) {
-        return morse.split(' ').map(char => morseToText[char] || '').join('');
-    }
+    const morseATexto = morse => morse.split(' ').map(char => morseToText[char] || ' ').join('');
 
     // Evento: convertir texto a morse
-    $('#btnTextoAMorse').on('click', function() {
+    $('#btnTextoAMorse').on('click', () => {
         const texto = $('#inputTexto').val();
-        if (validarEntrada(texto)) {
+        if (validarEntrada(texto) && validarCaracteres(texto)) {
             const morse = textoAMorse(texto);
             $('#resultado').removeClass('d-none').addClass('alert-success').text(`Morse: ${morse}`);
             $('#alertaError').addClass('d-none');
@@ -44,7 +41,7 @@ $(document).ready(function() {
     });
 
     // Evento: convertir morse a texto
-    $('#btnMorseATexto').on('click', function() {
+    $('#btnMorseATexto').on('click', () => {
         const morse = $('#inputTexto').val();
         if (validarEntrada(morse)) {
             const texto = morseATexto(morse);
